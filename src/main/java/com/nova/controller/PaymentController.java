@@ -31,13 +31,13 @@ public class PaymentController {
     public Response getById(@PathParam("id") String id) {
         return paymentService.findById(id)
                 .map(payment -> Response.ok(payment).build())
-                .orElse(Response.status(Response.Status.NOT_FOUND).build());
+                .orElse(Response.status(Response.Status.NOT_FOUND).build());//bni222
     }
 
     @POST
     public Response create(Payment payment) {
         Payment created = paymentService.create(payment);
-        return Response.status(Response.Status.CREATED).entity(created).build();
+        return Response.status(Response.Status.CREATED).entity(created).build();//bniiiiiiiii
     }
 
     @PUT
