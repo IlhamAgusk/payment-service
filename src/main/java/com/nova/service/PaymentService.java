@@ -38,7 +38,7 @@ public class PaymentService {
         return paymentRepository.findByIdOptional(id).map(payment -> {
             payment.setStatus(updatePayment.getStatus());
             payment.setAmount(updatePayment.getAmount());
-            payment.setPaymentMethod(updatePayment.getPaymentMethod());
+            payment.setPaymentMethod(updatePayment.getPaymentMethod());//bni
             return true;
         }).orElse(false);
     }

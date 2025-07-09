@@ -37,7 +37,7 @@ public class PaymentController {
     @POST
     public Response create(Payment payment) {
         Payment created = paymentService.create(payment);
-        return Response.status(Response.Status.CREATED).entity(created).build();
+        return Response.status(Response.Status.CREATED).entity(created).build();//bniiiiiiiii
     }
 
     @PUT
