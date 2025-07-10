@@ -1,8 +1,8 @@
--- 1. Buat database jika belum ada
-CREATE DATABASE usersdb;
+-- -- 1. Buat database jika belum ada
+-- CREATE DATABASE postgre_db;
 
 -- 2. Connect ke database
--- \c usersdb
+-- \c postgre_db
 
 -- 3. Buat schema
 CREATE SCHEMA payment_schema;
