@@ -16,13 +16,13 @@ public class Payment extends BaseEntity {
     @Column(unique = true, nullable = false)
     private String id;
 
-    @Column(nullable = false)
+    @Column(nullable = false, precision = 15, scale = 2)
     public BigDecimal amount;
 
-    @Column(name = "payment_method", nullable = false)
-    public String paymentMethod;
+    @Column(name = "payment_method", nullable = false, length = 255)
+    public String paymentMethod = "CASH";
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 100)
     public String status;
 
     //Getter & Setter
