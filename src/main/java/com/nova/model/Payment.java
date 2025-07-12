@@ -1,9 +1,6 @@
 package com.nova.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import org.hibernate.annotations.UuidGenerator;
 
 import java.math.BigDecimal;
@@ -11,22 +8,29 @@ import java.math.BigDecimal;
 @Entity
 @Table(name = "payments")
 public class Payment extends BaseEntity {
+
     @Id
     @UuidGenerator
     @Column(unique = true, nullable = false)
     private String id;
 
     @Column(nullable = false, precision = 15, scale = 2)
-    public BigDecimal amount;
+    private BigDecimal amount;
 
     @Column(name = "payment_method", nullable = false, length = 255)
-    public String paymentMethod = "CASH";
+    private String paymentMethod = "CASH";
 
     @Column(nullable = false, length = 100)
-    public String status;
+    private String status;
 
-    //Getter & Setter
+    @OneToOne(mappedBy = "payment", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    private Refund refund;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "customer_id", nullable = false)
+    private Customer customer;
+
+    // Getters & Setters
 
     public String getId() {
         return id;
@@ -58,5 +62,21 @@ public class Payment extends BaseEntity {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public Refund getRefund() {
+        return refund;
+    }
+
+    public void setRefund(Refund refund) {
+        this.refund = refund;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
 }
