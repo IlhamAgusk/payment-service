@@ -24,7 +24,7 @@ public abstract class BaseEntity {
     @Column(name = "updated_by", length = 100, nullable = false)
     protected String updatedBy = "system"; // default "system", bisa override nanti
 
-    // Getters
+    // Getters & Setters
     public LocalDateTime getCreatedAt() {
         return createdAt;
     }
